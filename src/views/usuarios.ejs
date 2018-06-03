@@ -1,0 +1,70 @@
+<% include comunes/header %>
+    <div class="container mt-5">
+        <div class="row">
+            <section class="listUsers col-md-7">
+                <div>
+                    <% if (data.length>0){ %>
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nro.</th>
+                                <th>Apellido, Nombre</th>
+                                <th>Nick</th>
+                                <!-- <th>Fecha Creación</th> -->
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            
+                            <% let i=0; data.forEach(user=>{ %>
+                                
+                                <tr>
+                                    <th><%= ++i %></th>
+                                    <th><%= user.apellido + ', ' + user.nombre %></th>
+                                    <th><%= user.nick %></th>
+                                    <!-- <th><%= user.dateCreate %></th> -->
+                                    <th>
+                                        <a href="/delete/<%= user.id %>" class="btn btn-danger btn-block">Quitar</a>
+                                        <a href="/update/<%= user.id %>" class="btn btn-info btn-block">Editar</a>
+                                    </th>
+                                </tr>
+                            <% }) %>
+                            
+                        </tbody>
+                        
+                    </table>
+                    <% } else { %>
+                        <p>No hay ningun usuario.</p>
+                    <% } %>
+                </div>
+            </section>
+
+            <section class="addUsers col-md-5">
+                <div class="card">
+
+                    <div class="card-body">
+                        <form action="/add" method="POST" autocomplete="off">
+                            <div class="form-group">
+                                <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="apellido" class="form-control" placeholder="Apellido" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="nick" class="form-control" placeholder="Nick de usuario" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="pass" class="form-control" placeholder="Contraseña" required>
+                            </div>
+                            <input type="submit" class="btn-primary btn btn-block" value="Agregar" />
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+
+        </div>
+    </div>
+
+<% include comunes/footer %>

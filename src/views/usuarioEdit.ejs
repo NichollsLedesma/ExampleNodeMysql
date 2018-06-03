@@ -1,0 +1,29 @@
+<% include comunes/header %>
+    <div class="container mt-5 ">
+        <section class="updateUser row">
+            <div class="card col-md-5">
+
+                <div class="card-body">
+                    <form action="/update/<%= data.id %>" method="POST" autocomplete="off">
+                        <div class="form-group">
+                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" required value="<%= data.nombre %>">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="apellido" class="form-control" placeholder="Apellido" required value="<%= data.apellido %>">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="nick" class="form-control" placeholder="Nick de usuario" required value="<%= data.nick %>">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="pass" class="form-control" placeholder="Contraseña" required value="<%= data.pass %>">
+                        </div>
+                        <input type="submit" class="btn-primary btn" value="Actualizar" />
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+<% include comunes/footer %>
